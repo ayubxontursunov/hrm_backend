@@ -3,7 +3,6 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 router = DefaultRouter()
-router.register(r'users', views.UserViewSet)
 router.register(r'employees', views.EmployeeViewSet)
 router.register(r'departments', views.DepartmentViewSet)
 router.register(r'divisions', views.DivisionViewSet)
@@ -23,4 +22,12 @@ router.register(r'tokens', views.TokenViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+
+    path('user/', views.UserCreateView.as_view(), name='user-create'),
+
+    # Route for updating or deleting a user
+    path('user/<int:user_id>/', views.UserCreateView.as_view(), name='user-detail'),
+    path('login/', views.LoginView.as_view(), name='login'),
 ]
+
+

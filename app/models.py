@@ -3,7 +3,7 @@ from django.db import models
 class User(models.Model):
     username = models.CharField(max_length=50, unique=True, null=False)
     email = models.EmailField(max_length=100, unique=True, null=False)
-    password_hash = models.CharField(max_length=255, null=False)
+    password_hash = models.CharField(max_length=255, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -19,6 +19,9 @@ class Department(models.Model):
 
     def __str__(self):
         return self.department_name
+
+
+
 
 class Division(models.Model):
     division_name = models.CharField(max_length=100, null=False)
